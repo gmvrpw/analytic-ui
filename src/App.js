@@ -1,5 +1,14 @@
+import { ThemeProvider } from "styled-components";
+import GlobalStyle, { theme } from "./styles";
+import Index from "./pages/Index";
+
 const App = () => {
-  return <div className="App"></div>;
+  return (
+    <ThemeProvider theme={theme.light}>
+      <Index />
+      <GlobalStyle />
+    </ThemeProvider>
+  );
 };
 
 export default App;
