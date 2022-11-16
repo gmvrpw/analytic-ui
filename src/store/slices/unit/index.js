@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const unitSlice = createSlice({
   name: "unit",
   initialState: {
-    name: "",
+    name: "Рекурсивная аналитика",
   },
   reducers: {
     setName: (state, action) => {
