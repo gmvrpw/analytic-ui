@@ -1,7 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
 export const theme = {
-  light: {},
+  light: {
+    header: {
+      height: "4rem",
+      background: "white",
+    },
+  },
   dark: {},
 };
 
