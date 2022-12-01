@@ -25,7 +25,7 @@ export const Name = styled.div`
   display: flex;
   font-size: 1.6em;
   line-height: 2em;
-  font-weight: 800;
+  font-weight: 300;
   font-family: "Dela Gothic One", cursive;
 `;
 
