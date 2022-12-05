@@ -14,15 +14,14 @@ export const Item = styled(NavLink).attrs((props) => ({
   }),
 }))`
   display: flex;
-  flex: 1;
   align-items: center;
-  min-height: 2.8rem;
-  font-size: 1.2rem;
+  min-height: 32px;
+  font-size: 12px;
   font-family: "Dela Gothic One", serif;
   font-weight: 100;
   border-radius: 0.7rem;
   color: ${(props) => props.theme.navigation.color};
   text-decoration: none;
-  padding: 0 1.2rem;
+  padding: 0 16px;
   z-index: 1;
 `;
