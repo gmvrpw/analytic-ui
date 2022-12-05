@@ -14,7 +14,6 @@ export const Item = styled(NavLink).attrs((props) => ({
   }),
 }))`
   display: flex;
-  flex: 1;
   align-items: center;
   min-height: 32px;
   font-size: 12px;
