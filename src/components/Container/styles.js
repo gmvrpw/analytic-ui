@@ -76,4 +76,5 @@ export const Trigger = styled.div`
     background: #f0f0f0;
   }
   cursor: default;
+  user-select: none;
 `;
