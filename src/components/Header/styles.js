@@ -6,7 +6,6 @@ export const Container = styled.header`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: ${(props) => props.theme.header.height};
   width: 100%;
   box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
   padding: 0 1.5rem;
