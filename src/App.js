@@ -1,7 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import GlobalStyle, { theme } from "./styles";
-import Index from "./pages/Index";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Index from "./pages/Index";
 import Unit from "./pages/Unit";
 
 const App = () => {

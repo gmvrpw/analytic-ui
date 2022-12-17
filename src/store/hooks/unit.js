@@ -9,3 +9,8 @@ export const useUnitName = () => {
   };
   return [name, setUnitName];
 };
+
+export const useContainers = () => {
+  const containers = useSelector((state) => state.unit.containers);
+  return [containers];
+};
