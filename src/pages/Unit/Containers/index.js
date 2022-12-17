@@ -14,16 +14,18 @@ const Containers = () => {
           "Ищите что-то конкретное? Начните вводить: название, тэг, класс, айди..."
         }
       />
-      <S.Containers>
-        {containers.map((container) => (
-          <Container
-            key={container.id}
-            id={container.id}
-            name={container.name}
-            triggers={container.triggers}
-          />
-        ))}
-      </S.Containers>
+      <S.Wrapper>
+        <S.Containers>
+          {containers.map((container) => (
+            <Container
+              key={container.id}
+              id={container.id}
+              name={container.name}
+              triggers={container.triggers}
+            />
+          ))}
+        </S.Containers>
+      </S.Wrapper>
     </S.Container>
   );
 };

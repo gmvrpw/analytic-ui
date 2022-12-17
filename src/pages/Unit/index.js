@@ -14,15 +14,13 @@ const Unit = () => {
       <Header />
       <S.Page>
         <Navigation />
-        <S.Content>
-          <Routes>
-            <Route path={"/report"} element={<Reports />} />
-            <Route path={"/tracked"} element={<Tracked />} />
-            <Route path={"/containers"} element={<Containers />} />
-            <Route path={"/requests"} element={<Requests />} />
-            <Route path={"/data"} element={<Data />} />
-          </Routes>
-        </S.Content>
+        <Routes>
+          <Route path={"/report"} element={<Reports />} />
+          <Route path={"/tracked"} element={<Tracked />} />
+          <Route path={"/containers"} element={<Containers />} />
+          <Route path={"/requests"} element={<Requests />} />
+          <Route path={"/data"} element={<Data />} />
+        </Routes>
       </S.Page>
     </S.Container>
   );

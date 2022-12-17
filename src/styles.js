@@ -13,7 +13,6 @@ import InterThin from "./fonts/Inter-Thin.ttf";
 export const theme = {
   light: {
     header: {
-      height: "4rem",
       background: "white",
     },
     navigation: {
@@ -27,7 +26,14 @@ export const theme = {
   dark: {},
 };
 
-export const constants = {};
+export const constants = {
+  header: {
+    height: "44px",
+  },
+  sidebar: {
+    width: "192px",
+  },
+};
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -93,6 +99,8 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     border: 0;
+    height: 100%;
+    width: 100%;
     font-family: 'Inter', sans-serif !important;
   }
   * {
