@@ -16,5 +16,3 @@ export const Page = styled.div`
   padding: 1rem;
   gap: 1rem;
 `;
-
-export const Content = styled.div``;

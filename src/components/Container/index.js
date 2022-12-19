@@ -8,15 +8,20 @@ const Container = ({ id, name, triggers }) => {
         <S.Name>{name}</S.Name>
       </S.NameWrapper>
       <S.Triggers>
-        {triggers.map((trigger, index) => (
+        {triggers.slice(0, 7).map((trigger, index) => (
           <S.Trigger key={index}>
-            {trigger.element}#{trigger.id}.{trigger.className}
+            {trigger.element.name}#{trigger.element.id}.
+            {trigger.element.className}({trigger.event})
           </S.Trigger>
         ))}
-        <S.FallInto to={`${id}`}>
-          {"все 36"}
-          <S.FallIntoIcon />
-        </S.FallInto>
+        {triggers.length > 7 ? (
+          <S.FallInto to={`${id}`}>
+            и еще {triggers.length - 7}
+            <S.FallIntoIcon />
+          </S.FallInto>
+        ) : (
+          false
+        )}
       </S.Triggers>
     </S.Container>
   );
