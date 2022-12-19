@@ -122,6 +122,14 @@ export const unitSlice = createSlice({
       const { name } = action.payload;
       state.name = name;
     },
+    createTrigger: (state, action) => {
+      const { containerId, trigger } = action.payload;
+      for (const containerIndex in state.containers) {
+        if (state.containers[containerIndex].id == containerId) {
+          state.containers[containerIndex].triggers.push(trigger);
+        }
+      }
+    },
     updateTrigger: (state, action) => {
       const { containerIndex, triggerIndex, trigger } = action.payload;
       state.containers[containerIndex].triggers[triggerIndex] = trigger;
@@ -138,6 +146,7 @@ export const unitSlice = createSlice({
   },
 });
 
-export const { setName, updateTrigger, deleteTrigger } = unitSlice.actions;
+export const { setName, createTrigger, updateTrigger, deleteTrigger } =
+  unitSlice.actions;
 
 export default unitSlice.reducer;

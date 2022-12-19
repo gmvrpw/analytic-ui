@@ -106,7 +106,3 @@ export const ModalInput = styled.input`
   font-size: 10px;
   background: #f0f0f0;
 `;
-
-export const ModalSelect = styled.select``;
-
-export const ModalOption = styled.option``;

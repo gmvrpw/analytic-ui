@@ -1,5 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
-import { deleteTrigger, setName, updateTrigger } from "../slices/unit";
+import {
+  createTrigger,
+  deleteTrigger,
+  setName,
+  updateTrigger,
+} from "../slices/unit";
 
 export const useUnitName = () => {
   const dispatch = useDispatch();
@@ -38,4 +43,11 @@ export const useTrigger = (id) => {
       }
     }
   }
+};
+
+export const useCreateTrigger = (containerId) => {
+  const dispatch = useDispatch();
+  return (trigger) => {
+    dispatch(createTrigger({ containerId, trigger }));
+  };
 };
