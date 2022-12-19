@@ -6,7 +6,7 @@ const DeletingModal = ({ title, onAbort, onSubmit, children }) => {
       <S.Title>{title}</S.Title>
       <S.Body>{children}</S.Body>
       <S.Answers>
-        <S.Save onClick={onSubmit}>Удалить</S.Save>
+        <S.Save onClick={onSubmit}>Сохранить</S.Save>
         <S.Abort onClick={onAbort} autoFocus={true}>
           Отмена
         </S.Abort>
