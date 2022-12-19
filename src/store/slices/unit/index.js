@@ -134,7 +134,6 @@ export const unitSlice = createSlice({
         );
         return container;
       });
-      console.log(state);
     },
   },
 });

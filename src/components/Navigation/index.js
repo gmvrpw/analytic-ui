@@ -23,8 +23,7 @@ const items = [
   },
 ];
 
-const Navigation = ({ match }) => {
-  console.log(match);
+const Navigation = () => {
   return (
     <S.Container>
       {items.map((item, index) => (
