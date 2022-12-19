@@ -9,7 +9,7 @@ const App = () => {
     <ThemeProvider theme={theme.light}>
       <Router>
         <Routes>
-          <Route path={"/unit/:id/*"} element={<Unit />} />
+          <Route path={"/unit/:unitId/*"} element={<Unit />} />
           <Route path={"/"} element={<Index />} />
         </Routes>
       </Router>

@@ -19,8 +19,7 @@ export const Container = styled.div`
   border-radius: 1.2rem;
   background: white;
   gap: 15px;
-  min-height: 320px;
-  min-width: 320px;
+  min-width: 0px;
   aspect-ratio: 1 / 1;
 `;
 
@@ -45,10 +44,10 @@ const ClippedNameAnimation = keyframes`
     transform: translate(0, 0);
   }
   80% {
-    transform: translate(calc(-100% + 305px), 0);
+    transform: translate(calc(-100% + 230px), 0);
   }
   100% {
-    transform: translate(calc(-100% + 305px), 0);
+    transform: translate(calc(-100% + 230px), 0);
   }
 `;
 
