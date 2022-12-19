@@ -1,19 +1,34 @@
 import * as S from "./styles";
 import { useTrigger } from "../../store/hooks/unit";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "../Modal";
 import DeletingModal from "../Modal/DeletingModal";
-import { ModalQuestion } from "./styles";
+import EditingModal from "../Modal/EditingModal";
 
 const Trigger = ({ id }) => {
   const [deleting, setDeleting] = useState(false);
-  const [trigger, , deleteTrigger] = useTrigger(id);
+  const [editing, setEditing] = useState(false);
+  const [trigger, updateTrigger, deleteTrigger] = useTrigger(id);
   const { element, event } = trigger;
   const triggerInString = `${element.name}#${element.id}.${element.className}(${event})`;
+  const [elementName, setElementName] = useState("");
+  const [elementId, setElementId] = useState("");
+  const [elementClassName, setElementClassName] = useState("");
+  const [triggerEvent, setTriggerEvent] = useState("");
+  useEffect(() => {
+    setElementName(trigger.element.name);
+    setElementId(trigger.element.id);
+    setElementClassName(trigger.element.className);
+    setTriggerEvent(trigger.event);
+  }, [trigger]);
   return (
     <S.Container tabIndex={0}>
       {triggerInString}
-      <S.Edit>
+      <S.Edit
+        onClick={() => {
+          setEditing(true);
+        }}
+      >
         <S.EditIcon />
       </S.Edit>
       <S.Delete
@@ -28,10 +43,10 @@ const Trigger = ({ id }) => {
           <DeletingModal
             title={"Удаление тригера"}
             question={
-              <ModalQuestion>
+              <S.ModalQuestion>
                 Вы действительно хотите удалить тригер{" "}
                 <S.ModalTrigger>{triggerInString}</S.ModalTrigger>?
-              </ModalQuestion>
+              </S.ModalQuestion>
             }
             onAbort={() => {
               setDeleting(false);
@@ -41,6 +56,61 @@ const Trigger = ({ id }) => {
               setDeleting(false);
             }}
           />
+        </Modal>
+      ) : (
+        false
+      )}
+      {editing ? (
+        <Modal onAbort={() => setEditing(false)}>
+          <EditingModal
+            title={"Изменение тригера"}
+            onAbort={() => {
+              setEditing(false);
+            }}
+            onSubmit={() => {
+              updateTrigger({
+                id: trigger.id,
+                element: {
+                  name: elementName,
+                  id: elementId,
+                  className: elementClassName,
+                },
+                event: triggerEvent,
+              });
+              setEditing(false);
+            }}
+          >
+            <S.ModalBody>
+              <S.ModalInput
+                placeholder={"Имя"}
+                defaultValue={elementName}
+                onChange={(e) => {
+                  setElementName(e.target.value);
+                }}
+              />
+              <S.ModalInput
+                placeholder={"Id"}
+                defaultValue={elementId}
+                onChange={(e) => {
+                  setElementId(e.target.value);
+                }}
+              />
+              <S.ModalInput
+                placeholder={"Класс"}
+                defaultValue={elementClassName}
+                onChange={(e) => {
+                  setElementClassName(e.target.value);
+                }}
+              />
+              <S.ModalInput
+                placeholder={"Ивент"}
+                defaultValue={triggerEvent}
+                onChange={(e) => {
+                  setTriggerEvent(e.target.value);
+                }}
+              />
+            </S.ModalBody>
+          </EditingModal>
         </Modal>
       ) : (
         false
