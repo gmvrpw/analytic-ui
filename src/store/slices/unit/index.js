@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const unitSlice = createSlice({
+  iterator: 1000000,
   name: "unit",
   initialState: {
     name: "Рекурсивная аналитика",
@@ -126,6 +127,8 @@ export const unitSlice = createSlice({
       const { containerId, trigger } = action.payload;
       for (const containerIndex in state.containers) {
         if (state.containers[containerIndex].id == containerId) {
+          trigger.id =
+            state.containers[containerIndex].triggers.at(-1).id * 100;
           state.containers[containerIndex].triggers.push(trigger);
         }
       }

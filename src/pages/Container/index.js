@@ -12,6 +12,7 @@ const Containers = () => {
   const { containerId } = useParams();
   const container = useContainer(containerId);
   const { name, triggers } = container;
+  console.log(triggers);
   const [creating, setCreating] = useState(false);
   const createTrigger = useCreateTrigger(containerId);
   const [elementName, setElementName] = useState("");
@@ -67,8 +68,8 @@ const Containers = () => {
               .toLowerCase()
               .includes(search.toLowerCase())
           )
-          .map((trigger, index) => (
-            <Trigger key={trigger.id || index + 100000000} id={trigger.id} />
+          .map((trigger) => (
+            <Trigger key={trigger.id} id={trigger.id} />
           ))}
       </S.Triggers>
       {creating ? (
