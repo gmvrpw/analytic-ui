@@ -6,7 +6,7 @@ const items = [
     name: "Отчеты",
   },
   {
-    to: "containers",
+    to: "container",
     name: "Контейнеры",
   },
   {
