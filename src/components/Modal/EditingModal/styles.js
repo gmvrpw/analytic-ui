@@ -32,7 +32,7 @@ export const Answers = styled.div`
 
 export const Save = styled.button`
   background: rgb(255, 255, 255);
-  color: red;
+  color: green;
   border: none;
   font-size: 10px;
   padding: 6px 16px;
