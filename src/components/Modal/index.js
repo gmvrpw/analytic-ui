@@ -2,7 +2,6 @@ import ReactDOM from "react-dom";
 import * as S from "./styles";
 
 const Modal = ({ onAbort, children }) => {
-  console.log(1);
   return ReactDOM.createPortal(
     <S.Container
       onClick={(e) => {
