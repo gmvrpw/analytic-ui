@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import * as S from "./styles";
 import Header from "../../components/Header";
 import Navigation from "../../components/Navigation";
@@ -10,6 +10,7 @@ import Requests from "./Requests";
 import Data from "./Data";
 
 const Unit = () => {
+  const { unitId } = useParams();
   return (
     <S.Container>
       <Header />
@@ -19,7 +20,7 @@ const Unit = () => {
           <Route path={"/report"} element={<Reports />} />
           <Route path={"/tracked"} element={<Tracked />} />
           <Route path={"/container/:containerId"} element={<Container />} />
-          <Route path={"/container"} element={<Containers />} />
+          <Route path={"/container"} element={<Containers unitId={unitId} />} />
           <Route path={"/requests"} element={<Requests />} />
           <Route path={"/data"} element={<Data />} />
         </Routes>
