@@ -51,12 +51,14 @@ const ClippedNameAnimation = keyframes`
   }
 `;
 
-export const Name = styled.div`
+export const Name = styled(Link)`
+  display: block;
   text-align: center;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   font-family: Dela Gothic One, serif;
+  text-decoration: none;
   font-weight: 400;
   font-size: 30px;
   height: 100%;

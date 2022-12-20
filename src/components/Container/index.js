@@ -5,7 +5,7 @@ const Container = ({ id, name, triggers }) => {
     <S.Container>
       <S.ID>{id}</S.ID>
       <S.NameWrapper>
-        <S.Name>{name}</S.Name>
+        <S.Name to={`${id}`}>{name}</S.Name>
       </S.NameWrapper>
       <S.Triggers>
         {triggers.slice(0, 7).map((trigger, index) => (
