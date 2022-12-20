@@ -101,8 +101,10 @@ export const Search = styled(TextInput).attrs(() => ({
 
 export const Triggers = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: row;
   flex-wrap: wrap;
+  align-content: flex-start;
   gap: 8px;
 `;
 
@@ -142,3 +144,12 @@ export const ModalInput = styled.input`
   font-size: 10px;
   background: #f0f0f0;
 `;
+
+export const Actions = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  height: 52px;
+`;
+
+export const Save = styled.button``;

@@ -1,32 +1,37 @@
 import * as S from "./styles";
 import { useParams } from "react-router-dom";
-import { useContainer, useCreateTrigger } from "../../store/hooks/unit";
+import {
+  useContainer,
+  useCreateTrigger,
+  useSaveContainer,
+} from "../../store/hooks/unit";
 import Trigger from "../../components/Trigger";
 import { useState } from "react";
-import { NewTrigger, NewTriggerIcon } from "./styles";
 import Modal from "../../components/Modal";
 import EditingModal from "../../components/Modal/EditingModal";
 
 const Containers = () => {
-  const [search, setSearch] = useState("");
   const { containerId } = useParams();
-  const container = useContainer(containerId);
-  const { name, triggers } = container;
-  console.log(triggers);
+  const { container, isLoading } = useContainer(containerId);
+  const saveContainer = useSaveContainer(containerId);
+  const [search, setSearch] = useState("");
   const [creating, setCreating] = useState(false);
-  const createTrigger = useCreateTrigger(containerId);
+  const createTrigger = useCreateTrigger();
   const [elementName, setElementName] = useState("");
   const [elementId, setElementId] = useState("");
   const [elementClassName, setElementClassName] = useState("");
   const [triggerEvent, setTriggerEvent] = useState("");
   const scriptURL = `<script src="analytic.com/scripts/${containerId}.js" />`;
-  return (
+  console.log(container);
+  return isLoading ? (
+    "loading"
+  ) : (
     <S.Container>
       <S.Title>
         <S.Back to={"../container"}>
           <S.BackIcon />
         </S.Back>
-        <S.Name>Контейнеры / {name}</S.Name>
+        <S.Name>Контейнеры / {container.containerName}</S.Name>
       </S.Title>
       <S.Script>
         <S.LineCounter>1</S.LineCounter>
@@ -54,22 +59,22 @@ const Containers = () => {
         }}
       />
       <S.Triggers>
-        <NewTrigger
+        <S.NewTrigger
           onClick={() => {
             setCreating(true);
           }}
         >
-          <NewTriggerIcon />
+          <S.NewTriggerIcon />
           Новый триггер
-        </NewTrigger>
-        {triggers
+        </S.NewTrigger>
+        {container.triggers
           .filter((trigger) =>
             `${trigger.element.name}#${trigger.element.id}.${trigger.element.className}(${trigger.event})`
               .toLowerCase()
               .includes(search.toLowerCase())
           )
           .map((trigger) => (
-            <Trigger key={trigger.id} id={trigger.id} />
+            <Trigger key={trigger.triggerId} trigger={trigger} />
           ))}
       </S.Triggers>
       {creating ? (
@@ -126,6 +131,15 @@ const Containers = () => {
       ) : (
         false
       )}
+      <S.Actions>
+        <S.Save
+          onClick={() => {
+            saveContainer(container);
+          }}
+        >
+          Сохранить
+        </S.Save>
+      </S.Actions>
     </S.Container>
   );
 };

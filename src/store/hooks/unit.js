@@ -46,16 +46,16 @@ export const useDeleteTrigger = (id) => {
   };
 };
 
-export const useCreateTrigger = () => {
-  const dispatch = useDispatch();
-  return (trigger) => {
-    dispatch(createTrigger(trigger));
-  };
-};
-
 export const useSaveContainer = (id) => {
   const dispatch = useDispatch();
   return (container) => {
     dispatch(saveContainer(id, container));
+  };
+};
+
+export const useCreateTrigger = () => {
+  const dispatch = useDispatch();
+  return (trigger) => {
+    dispatch(createTrigger(trigger));
   };
 };

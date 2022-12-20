@@ -1,16 +1,17 @@
 import * as S from "./styles";
-import { useTrigger } from "../../store/hooks/unit";
 import { useEffect, useState } from "react";
 import Modal from "../Modal";
 import DeletingModal from "../Modal/DeletingModal";
 import EditingModal from "../Modal/EditingModal";
+import { useDeleteTrigger, useUpdateTrigger } from "../../store/hooks/unit";
 
-const Trigger = ({ id }) => {
+const Trigger = ({ trigger }) => {
+  const { triggerId, element, event } = trigger;
+  const triggerInString = `${element.name}#${element.id}.${element.className}(${event})`;
+  const updateTrigger = useUpdateTrigger(triggerId);
+  const deleteTrigger = useDeleteTrigger(triggerId);
   const [deleting, setDeleting] = useState(false);
   const [editing, setEditing] = useState(false);
-  const [trigger, updateTrigger, deleteTrigger] = useTrigger(id);
-  const { element, event } = trigger;
-  const triggerInString = `${element.name}#${element.id}.${element.className}(${event})`;
   const [elementName, setElementName] = useState("");
   const [elementId, setElementId] = useState("");
   const [elementClassName, setElementClassName] = useState("");
@@ -69,7 +70,7 @@ const Trigger = ({ id }) => {
             }}
             onSubmit={() => {
               updateTrigger({
-                id: trigger.id,
+                triggerId,
                 element: {
                   name: elementName,
                   id: elementId,
