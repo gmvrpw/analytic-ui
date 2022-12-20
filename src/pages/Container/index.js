@@ -22,7 +22,6 @@ const Containers = () => {
   const [elementClassName, setElementClassName] = useState("");
   const [triggerEvent, setTriggerEvent] = useState("");
   const scriptURL = `<script src="analytic.com/scripts/${containerId}.js" />`;
-  console.log(container);
   return isLoading ? (
     "loading"
   ) : (

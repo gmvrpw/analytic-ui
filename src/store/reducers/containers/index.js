@@ -4,6 +4,8 @@ import containersReducers from "./containersReducers";
 const initialState = {
   name: "Рекурсивная аналитика",
   containers: [],
+  createdContainerId: null,
+  isCreating: false,
   isLoading: false,
   errors: "",
 };
