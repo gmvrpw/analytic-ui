@@ -1,10 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authSliceReducer from "./slices/auth";
-import unitSliceReducer from "./slices/unit";
+import rootReducer from "./reducers";
+import { httpApi } from "./middlewares/api";
 
 export default configureStore({
-  reducer: {
-    auth: authSliceReducer,
-    unit: unitSliceReducer,
-  },
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), httpApi],
 });
