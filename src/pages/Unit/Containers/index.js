@@ -4,8 +4,33 @@ import TextInput from "../../../components/TextInput";
 import Container from "../../../components/Container";
 import { useContainers } from "../../../store/hooks/unit";
 
-const Containers = () => {
-  const [containers] = useContainers();
+const getContainers = (containers, search) => {
+  return containers
+    .filter(
+      (container) =>
+        container.containerName.toLowerCase().includes(search.toLowerCase()) ||
+        container.triggers
+          .reduce(
+            (acc, cur) =>
+              acc +
+              ` ${cur.element.name}#${cur.element.id}.${cur.element.className}(${cur.event})`,
+            ""
+          )
+          .toLowerCase()
+          .includes(search.toLowerCase())
+    )
+    .map((container) => (
+      <Container
+        key={container.containerId}
+        id={container.containerId}
+        name={container.containerName}
+        triggers={container.triggers}
+      />
+    ));
+};
+
+const Containers = ({ unitId }) => {
+  const { containers, isLoading } = useContainers(unitId);
   const [search, setSearch] = useState("");
   return (
     <S.Container>
@@ -22,28 +47,7 @@ const Containers = () => {
       />
       <S.Wrapper>
         <S.Containers>
-          {containers
-            .filter(
-              (container) =>
-                container.name.toLowerCase().includes(search.toLowerCase()) ||
-                container.triggers
-                  .reduce(
-                    (acc, cur) =>
-                      acc +
-                      ` ${cur.element.name}#${cur.element.id}.${cur.element.className}(${cur.event})`,
-                    ""
-                  )
-                  .toLowerCase()
-                  .includes(search.toLowerCase())
-            )
-            .map((container) => (
-              <Container
-                key={container.id}
-                id={container.id}
-                name={container.name}
-                triggers={container.triggers}
-              />
-            ))}
+          {isLoading ? "loading" : getContainers(containers, search)}
         </S.Containers>
       </S.Wrapper>
     </S.Container>
