@@ -53,9 +53,9 @@ export const useSaveContainer = (id) => {
   };
 };
 
-export const useCreateTrigger = (containerId) => {
+export const useCreateTrigger = () => {
   const dispatch = useDispatch();
   return (trigger) => {
-    dispatch(createTrigger({ containerId, trigger }));
+    dispatch(createTrigger(trigger));
   };
 };
