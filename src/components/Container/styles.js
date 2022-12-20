@@ -11,6 +11,53 @@ export const FallIntoIcon = styled(GoogleMaterialIcon).attrs(() => ({
   transition: left linear 100ms;
 `;
 
+export const Copy = styled.button`
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: Inter, sans-serif;
+  border: none;
+  padding: 0;
+  font-weight: 600;
+  opacity: 0;
+  overflow: hidden;
+  :hover {
+    background: #f0f0f0;
+  }
+  :focus {
+    opacity: 1;
+    background: #f0f0f0;
+  }
+`;
+
+export const Delete = styled(Copy)`
+  background: rgba(255, 255, 255);
+  :hover {
+    background: rgba(255, 230, 230);
+  }
+  :focus {
+    background: rgba(255, 230, 230);
+  }
+`;
+
+export const DeleteIcon = styled(GoogleMaterialIcon).attrs(() => ({
+  icon: "delete",
+}))`
+  color: red;
+  font-size: 14px;
+`;
+
+export const CopyIcon = styled(GoogleMaterialIcon).attrs(() => ({
+  icon: "javascript",
+}))`
+  font-size: 24px;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -21,13 +68,25 @@ export const Container = styled.div`
   gap: 15px;
   min-width: 0px;
   aspect-ratio: 1 / 1;
+  :hover ${Copy} {
+    opacity: 1;
+  }
+  :focus ${Copy} {
+    opacity: 1;
+  }
+  :hover ${Delete} {
+    opacity: 1;
+  }
+  :focus ${Delete} {
+    opacity: 1;
+  }
 `;
 
-export const ID = styled.div`
-  font-family: Inter, sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  text-align: center;
+export const Actions = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
 `;
 
 export const NameWrapper = styled.div`
@@ -114,4 +173,19 @@ export const Trigger = styled.div`
   }
   cursor: default;
   user-select: none;
+`;
+
+export const ModalQuestion = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+export const ModalContainer = styled.div`
+  font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 90%;
 `;

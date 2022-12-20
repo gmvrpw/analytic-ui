@@ -7,6 +7,7 @@ const initialState = {
   createdContainerId: null,
   isCreating: false,
   isLoading: false,
+  isDeleting: false,
   errors: "",
 };
 
