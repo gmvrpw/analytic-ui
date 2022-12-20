@@ -1,15 +1,24 @@
 import * as S from "./styles";
 import { useParams } from "react-router-dom";
-import { useContainer } from "../../store/hooks/unit";
+import { useContainer, useCreateTrigger } from "../../store/hooks/unit";
 import Trigger from "../../components/Trigger";
 import { useState } from "react";
 import { NewTrigger, NewTriggerIcon } from "./styles";
+import Modal from "../../components/Modal";
+import EditingModal from "../../components/Modal/EditingModal";
 
 const Containers = () => {
   const [search, setSearch] = useState("");
   const { containerId } = useParams();
   const container = useContainer(containerId);
   const { name, triggers } = container;
+  console.log(triggers);
+  const [creating, setCreating] = useState(false);
+  const createTrigger = useCreateTrigger(containerId);
+  const [elementName, setElementName] = useState("");
+  const [elementId, setElementId] = useState("");
+  const [elementClassName, setElementClassName] = useState("");
+  const [triggerEvent, setTriggerEvent] = useState("");
   const scriptURL = `<script src="analytic.com/scripts/${containerId}.js" />`;
   return (
     <S.Container>
@@ -45,7 +54,11 @@ const Containers = () => {
         }}
       />
       <S.Triggers>
-        <NewTrigger>
+        <NewTrigger
+          onClick={() => {
+            setCreating(true);
+          }}
+        >
           <NewTriggerIcon />
           Новый триггер
         </NewTrigger>
@@ -59,6 +72,60 @@ const Containers = () => {
             <Trigger key={trigger.id} id={trigger.id} />
           ))}
       </S.Triggers>
+      {creating ? (
+        <Modal onAbort={() => setCreating(false)}>
+          <EditingModal
+            title={"Создание тригера"}
+            onAbort={() => {
+              setCreating(false);
+            }}
+            onSubmit={() => {
+              createTrigger({
+                element: {
+                  name: elementName,
+                  id: elementId,
+                  className: elementClassName,
+                },
+                event: triggerEvent,
+              });
+              setCreating(false);
+            }}
+          >
+            <S.ModalBody>
+              <S.ModalInput
+                placeholder={"Имя"}
+                defaultValue={elementName}
+                onChange={(e) => {
+                  setElementName(e.target.value);
+                }}
+              />
+              <S.ModalInput
+                placeholder={"Id"}
+                defaultValue={elementId}
+                onChange={(e) => {
+                  setElementId(e.target.value);
+                }}
+              />
+              <S.ModalInput
+                placeholder={"Класс"}
+                defaultValue={elementClassName}
+                onChange={(e) => {
+                  setElementClassName(e.target.value);
+                }}
+              />
+              <S.ModalInput
+                placeholder={"Ивент"}
+                defaultValue={triggerEvent}
+                onChange={(e) => {
+                  setTriggerEvent(e.target.value);
+                }}
+              />
+            </S.ModalBody>
+          </EditingModal>
+        </Modal>
+      ) : (
+        false
+      )}
     </S.Container>
   );
 };

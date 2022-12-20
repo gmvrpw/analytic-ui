@@ -77,3 +77,32 @@ export const Container = styled.div`
     opacity: 1;
   }
 `;
+
+export const ModalQuestion = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+export const ModalTrigger = styled.div`
+  font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 90%;
+`;
+
+export const ModalBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
+export const ModalInput = styled.input`
+  border-radius: 8px;
+  padding: 8px;
+  border: none;
+  font-size: 10px;
+  background: #f0f0f0;
+`;

@@ -1,5 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
-import { setName } from "../slices/unit";
+import {
+  createTrigger,
+  deleteTrigger,
+  setName,
+  updateTrigger,
+} from "../slices/unit";
 
 export const useUnitName = () => {
   const dispatch = useDispatch();
@@ -21,12 +26,28 @@ export const useContainer = (id) => {
 };
 
 export const useTrigger = (id) => {
+  const dispatch = useDispatch();
   const containers = useSelector((state) => state.unit.containers);
   for (const containerIndex in containers) {
     for (const triggerIndex in containers[containerIndex].triggers) {
       if (containers[containerIndex].triggers[triggerIndex].id === id) {
-        return [containers[containerIndex].triggers[triggerIndex]];
+        return [
+          containers[containerIndex].triggers[triggerIndex],
+          (trigger) => {
+            dispatch(updateTrigger({ containerIndex, triggerIndex, trigger }));
+          },
+          () => {
+            dispatch(deleteTrigger({ id }));
+          },
+        ];
       }
     }
   }
+};
+
+export const useCreateTrigger = (containerId) => {
+  const dispatch = useDispatch();
+  return (trigger) => {
+    dispatch(createTrigger({ containerId, trigger }));
+  };
 };

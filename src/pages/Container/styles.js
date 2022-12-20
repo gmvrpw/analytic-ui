@@ -128,3 +128,17 @@ export const NewTrigger = styled.button`
     background: #f0f0f0;
   }
 `;
+
+export const ModalBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
+export const ModalInput = styled.input`
+  border-radius: 8px;
+  padding: 8px;
+  border: none;
+  font-size: 10px;
+  background: #f0f0f0;
+`;
