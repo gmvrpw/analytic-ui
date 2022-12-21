@@ -103,10 +103,10 @@ const ClippedNameAnimation = keyframes`
     transform: translate(0, 0);
   }
   80% {
-    transform: translate(calc(-100% + 230px), 0);
+    transform: translate(calc(-100% + 235px), 0);
   }
   100% {
-    transform: translate(calc(-100% + 230px), 0);
+    transform: translate(calc(-100% + 235px), 0);
   }
 `;
 
