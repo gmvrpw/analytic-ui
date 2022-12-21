@@ -10,6 +10,7 @@ import { createContainer } from "../actions/container/create";
 import { deleteContainer } from "../actions/container/delete";
 import { getUnitsByUserId } from "../actions/unit/getByUser";
 import { createUnit } from "../actions/unit/create";
+import { updateContainer } from "../actions/container/update";
 
 export const useUnits = (userId) => {
   const dispatch = useDispatch();
@@ -65,6 +66,9 @@ export const useContainer = (id) => {
     container,
     isLoading,
     errors,
+    updateContainer: (name) => {
+      dispatch(updateContainer(name));
+    },
   };
 };
 

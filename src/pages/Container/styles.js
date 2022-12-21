@@ -37,7 +37,7 @@ export const Title = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
 `;
 
 export const Name = styled.h1`
@@ -46,6 +46,32 @@ export const Name = styled.h1`
   font-weight: 300;
   padding: 0;
   margin: 0;
+`;
+
+export const Edit = styled.button`
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: Inter, sans-serif;
+  border: none;
+  padding: 0;
+  font-weight: 600;
+  border: 1px black dashed;
+  :hover {
+    background: #f0f0f0;
+  }
+`;
+
+export const EditIcon = styled(GoogleMaterialIcon).attrs(() => ({
+  icon: "edit",
+}))`
+  font-size: 14px;
 `;
 
 export const Copy = styled.button`
