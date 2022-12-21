@@ -27,6 +27,7 @@ export const Wrapper = styled.div`
 
 export const Containers = styled.div`
   position: absolute;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
