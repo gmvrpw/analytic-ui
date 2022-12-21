@@ -41,6 +41,11 @@ export const useContainers = (id) => {
   return { containers, isLoading, errors };
 };
 
+export const useTriggers = (unitId) => {
+  const { containers } = useContainers(unitId);
+  return containers.reduce((prev, cur) => prev.concat(cur.triggers), []);
+};
+
 export const useCreateContainer = (unitId) => {
   const dispatch = useDispatch();
   return (name) => {
