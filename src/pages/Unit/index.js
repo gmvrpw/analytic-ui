@@ -22,7 +22,7 @@ const Unit = () => {
           <Route path={"/container/:containerId"} element={<Container />} />
           <Route path={"/container"} element={<Containers unitId={unitId} />} />
           <Route path={"/requests"} element={<Requests />} />
-          <Route path={"/data"} element={<Data />} />
+          <Route path={"/data/:page"} element={<Data />} />
         </Routes>
       </S.Page>
     </S.Container>

@@ -18,7 +18,7 @@ const items = [
     name: "Запросы",
   },
   {
-    to: "data",
+    to: "data/1",
     name: "Данные",
   },
 ];
