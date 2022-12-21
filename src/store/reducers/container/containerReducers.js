@@ -8,6 +8,7 @@ const containerReducers = {
     return {
       ...state,
       ...action.data,
+      sync: true,
       isLoading: false,
     };
   },
@@ -18,6 +19,7 @@ const containerReducers = {
   },
   UPDATE_CONTAINER: (state, action) => {
     state.containerName = action.query.name;
+    state.sync = false;
     return state;
   },
   SAVE_CONTAINER_START: (state) => {
@@ -29,6 +31,7 @@ const containerReducers = {
     return {
       ...state,
       ...action.data,
+      sync: true,
     };
   },
   SAVE_CONTAINER_FAIL: (state, action) => {

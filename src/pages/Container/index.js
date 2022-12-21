@@ -70,6 +70,22 @@ const Containers = () => {
           false
         )}
       </S.Title>
+      {isLoading ? (
+        false
+      ) : container.sync ? (
+        false
+      ) : (
+        <S.NeedSaveMessage>
+          Изменения еще не вступили в силу! Как только сделаете все, что хотели
+          <S.Save
+            onClick={() => {
+              saveContainer(container);
+            }}
+          >
+            сохраните контейнер
+          </S.Save>
+        </S.NeedSaveMessage>
+      )}
       <S.Script>
         <S.LineCounter>1</S.LineCounter>
         <S.LineContent>{scriptURL}</S.LineContent>
@@ -168,15 +184,6 @@ const Containers = () => {
       ) : (
         false
       )}
-      <S.Actions>
-        <S.Save
-          onClick={() => {
-            saveContainer(container);
-          }}
-        >
-          Сохранить
-        </S.Save>
-      </S.Actions>
     </S.Container>
   );
 };

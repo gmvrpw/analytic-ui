@@ -178,4 +178,28 @@ export const Actions = styled.div`
   height: 52px;
 `;
 
-export const Save = styled.button``;
+export const Save = styled.button`
+  height: 32px;
+  border-radius: 8px;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px black dashed;
+  background: rgba(255, 255, 255, 0.4);
+  :hover {
+    background: rgba(255, 255, 255, 0);
+  }
+`;
+
+export const NeedSaveMessage = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 16px;
+  height: 64px;
+  padding: 0 32px;
+  background: rgba(255, 202, 134, 0.5);
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+`;
