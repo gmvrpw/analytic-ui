@@ -6,6 +6,8 @@ import { updateTrigger } from "../actions/trigger/update";
 import { deleteTrigger } from "../actions/trigger/delete";
 import { createTrigger } from "../actions/trigger/create";
 import { saveContainer } from "../actions/container/save";
+import { createContainer } from "../actions/container/create";
+import { deleteContainer } from "../actions/container/delete";
 
 export const useContainers = (id) => {
   const dispatch = useDispatch();
@@ -16,6 +18,20 @@ export const useContainers = (id) => {
   const isLoading = useSelector((state) => state.containers.isLoading);
   const errors = useSelector((state) => state.containers.errors);
   return { containers, isLoading, errors };
+};
+
+export const useCreateContainer = (unitId) => {
+  const dispatch = useDispatch();
+  return (name) => {
+    dispatch(createContainer(unitId, name));
+  };
+};
+
+export const useDeleteContainer = (containerId) => {
+  const dispatch = useDispatch();
+  return () => {
+    dispatch(deleteContainer(containerId));
+  };
 };
 
 export const useContainer = (id) => {
