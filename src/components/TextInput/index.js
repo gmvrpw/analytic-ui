@@ -1,14 +1,21 @@
 import * as S from "./styles";
 import { useState } from "react";
 
-const TextInput = ({ type, icon, placeholder, defaultValue, onChange }) => {
+const TextInput = ({
+  type,
+  icon,
+  placeholder,
+  defaultValue,
+  onChange,
+  ...props
+}) => {
   const [value, setValue] = useState("");
   const _onChange = (e) => {
     const handler = onChange || setValue;
     handler(e.target.value);
   };
   return (
-    <S.Container>
+    <S.Container {...props}>
       <S.Icon icon={icon} />
       <S.Input
         type={type}
