@@ -7,7 +7,6 @@ export const Container = styled.header`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
   padding: 0 1.5rem;
   background: ${(props) => props.theme.header.background};
 `;
@@ -22,7 +21,7 @@ export const Logo = styled.img``;
 
 export const Name = styled.div`
   display: flex;
-  font-size: 1.6em;
+  font-size: 18px;
   line-height: 2em;
   font-weight: 300;
   font-family: "Dela Gothic One", cursive;
