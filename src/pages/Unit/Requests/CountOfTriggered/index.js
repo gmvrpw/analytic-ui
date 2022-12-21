@@ -55,7 +55,7 @@ const CountOfTriggered = () => {
         </S.Label>
         <S.Submit
           onClick={() => {
-            getCountOfTriggered(triggerId, from, to, 1);
+            getCountOfTriggered(triggerId, from, to, 0);
           }}
         >
           Найти

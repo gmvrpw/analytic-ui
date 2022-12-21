@@ -22,17 +22,22 @@ export const Name = styled.h1`
   margin: 0;
 `;
 
+export const TableWrapper = styled.div`
+  display: flex;
+  flex: 1;
+`;
+
 export const Table = styled.table`
+  width: 100%;
+  height: ${(props) => (props.size + 1) * 40}px;
   border-spacing: 0;
 `;
 
 export const HeaderRow = styled.tr`
-  height: 40px;
   background: white;
 `;
 
 export const Row = styled.tr`
-  height: 40px;
   :hover {
     background: white;
   }
@@ -53,11 +58,14 @@ export const Cell = styled.td`
 export const Navigation = styled.div`
   display: flex;
   justify-content: center;
+  gap: 8px;
   width: 100%;
   height: 40px;
 `;
 
-export const Page = styled(NavLink)`
+export const Page = styled(NavLink).attrs(() => ({
+  style: ({ isActive }) => (isActive ? { background: "white" } : undefined),
+}))`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,5 +76,7 @@ export const Page = styled(NavLink)`
   font-family: Inter, sans-serif;
   color: black;
   text-decoration: none;
-  background: white;
+  :hover {
+    background: white;
+  }
 `;
