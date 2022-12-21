@@ -16,6 +16,10 @@ const containerReducers = {
     state.errors = action.error;
     return state;
   },
+  UPDATE_CONTAINER: (state, action) => {
+    state.containerName = action.query.name;
+    return state;
+  },
   SAVE_CONTAINER_START: (state) => {
     state.isSaving = true;
     state.errors = null;

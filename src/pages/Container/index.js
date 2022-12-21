@@ -6,13 +6,13 @@ import {
   useSaveContainer,
 } from "../../store/hooks/unit";
 import Trigger from "../../components/Trigger";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "../../components/Modal";
 import EditingModal from "../../components/Modal/EditingModal";
 
 const Containers = () => {
   const { containerId } = useParams();
-  const { container, isLoading } = useContainer(containerId);
+  const { container, isLoading, updateContainer } = useContainer(containerId);
   const saveContainer = useSaveContainer(containerId);
   const [search, setSearch] = useState("");
   const [creating, setCreating] = useState(false);
@@ -21,6 +21,11 @@ const Containers = () => {
   const [elementId, setElementId] = useState("");
   const [elementClassName, setElementClassName] = useState("");
   const [triggerEvent, setTriggerEvent] = useState("");
+  const [editing, setEditing] = useState(false);
+  const [name, setName] = useState("");
+  useEffect(() => {
+    setName(container.containerName);
+  }, [container.containerName]);
   const scriptURL = `<script src="analytic.com/scripts/${containerId}.js" />`;
   return isLoading ? (
     "loading"
@@ -31,6 +36,39 @@ const Containers = () => {
           <S.BackIcon />
         </S.Back>
         <S.Name>Контейнеры / {container.containerName}</S.Name>
+        <S.Edit
+          onClick={() => {
+            setEditing(true);
+          }}
+        >
+          <S.EditIcon />
+        </S.Edit>
+        {editing ? (
+          <Modal onAbort={() => setEditing(false)}>
+            <EditingModal
+              title={"Изменение названия контейнера"}
+              onAbort={() => {
+                setEditing(false);
+              }}
+              onSubmit={() => {
+                updateContainer(name);
+                setEditing(false);
+              }}
+            >
+              <S.ModalBody>
+                <S.ModalInput
+                  placeholder={"Название"}
+                  defaultValue={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                />
+              </S.ModalBody>
+            </EditingModal>
+          </Modal>
+        ) : (
+          false
+        )}
       </S.Title>
       <S.Script>
         <S.LineCounter>1</S.LineCounter>
