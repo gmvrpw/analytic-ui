@@ -7,9 +7,7 @@ const unitsReducers = {
   },
   GET_UNITS_SUCCESS: (state, action) => {
     state.isLoading = false;
-    action.data.forEach((unit) => {
-      state.units.push(unit);
-    });
+    state.units = action.data;
     return state;
   },
   GET_UNITS_FAIL: (state, action) => {

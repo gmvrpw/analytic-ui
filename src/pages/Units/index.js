@@ -11,6 +11,7 @@ const Units = () => {
   const [creating, setCreating] = useState(false);
   const createContainer = useCreateUnit(1);
   const [name, setName] = useState("");
+  console.log(units);
   return (
     <S.Container>
       <Header />

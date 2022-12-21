@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.header`
   position: relative;
@@ -19,12 +20,14 @@ export const Home = styled.div`
 
 export const Logo = styled.img``;
 
-export const Name = styled.div`
+export const Name = styled(Link)`
   display: flex;
   font-size: 18px;
   line-height: 2em;
   font-weight: 300;
   font-family: "Dela Gothic One", cursive;
+  color: black;
+  text-decoration: none;
 `;
 
 export const Profile = styled.div`

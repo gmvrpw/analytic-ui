@@ -3,7 +3,7 @@ import GlobalStyle, { theme } from "./styles";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Unit from "./pages/Unit";
-import Units from "./pages/units";
+import Units from "./pages/Units";
 
 const App = () => {
   return (
