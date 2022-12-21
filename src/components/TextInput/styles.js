@@ -3,6 +3,7 @@ import { GoogleMaterialIcon } from "../Icon";
 
 export const Container = styled.div`
   display: flex;
+  align-items: center;
   padding: 1rem;
   border-radius: 1rem;
   gap: 1rem;
