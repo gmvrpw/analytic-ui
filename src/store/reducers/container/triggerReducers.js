@@ -7,6 +7,7 @@ const triggerReducers = {
         break;
       }
     }
+    state.sync = false;
     return state;
   },
   DELETE_TRIGGER: (state, action) => {
@@ -14,6 +15,7 @@ const triggerReducers = {
     state.triggers = state.triggers.filter(
       (trigger) => trigger.triggerId != _id
     );
+    state.sync = false;
     return state;
   },
   CREATE_TRIGGER: (state, action) => {
@@ -21,6 +23,7 @@ const triggerReducers = {
     state.uniqueTriggerId -= 1;
     trigger.triggerId = state.uniqueTriggerId;
     state.triggers.push(trigger);
+    state.sync = false;
     return state;
   },
 };
