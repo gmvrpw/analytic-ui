@@ -8,6 +8,26 @@ import { createTrigger } from "../actions/trigger/create";
 import { saveContainer } from "../actions/container/save";
 import { createContainer } from "../actions/container/create";
 import { deleteContainer } from "../actions/container/delete";
+import { getUnitsByUserId } from "../actions/unit/getByUser";
+import { createUnit } from "../actions/unit/create";
+
+export const useUnits = (userId) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUnitsByUserId(userId));
+  }, []);
+  const units = useSelector((state) => state.units.units);
+  const isLoading = useSelector((state) => state.units.isLoading);
+  const errors = useSelector((state) => state.units.errors);
+  return { units, isLoading, errors };
+};
+
+export const useCreateUnit = (userId) => {
+  const dispatch = useDispatch();
+  return (name) => {
+    dispatch(createUnit(userId, name));
+  };
+};
 
 export const useContainers = (id) => {
   const dispatch = useDispatch();

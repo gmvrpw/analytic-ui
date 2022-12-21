@@ -5,7 +5,7 @@ const Header = () => {
     <S.Container>
       <S.Home>
         <S.Logo />
-        <S.Name>Аналитика</S.Name>
+        <S.Name to={"/unit"}>Аналитика</S.Name>
       </S.Home>
     </S.Container>
   );
