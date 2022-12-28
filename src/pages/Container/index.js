@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import Modal from "../../components/Modal";
 import EditingModal from "../../components/Modal/EditingModal";
 
+const SCRIPTS_BASE_URL = process.env.REACT_APP_SCRIPTS_BASE_URL;
+
 const Containers = () => {
   const { containerId } = useParams();
   const { container, isLoading, updateContainer } = useContainer(containerId);
@@ -26,7 +28,7 @@ const Containers = () => {
   useEffect(() => {
     setName(container.containerName);
   }, [container.containerName]);
-  const scriptURL = `<script src="analytic.com/scripts/${containerId}.js" />`;
+  const scriptURL = `<script src="${SCRIPTS_BASE_URL}/${containerId}.js" />`;
   return isLoading ? (
     "loading"
   ) : (
