@@ -1,4 +1,5 @@
-const BASE_URL = "http://192.168.1.105:8080/api";
+const BASE_URL = process.env.REACT_APP_REST_BASE_URL;
+console.log(BASE_URL);
 
 export const httpApi = () => (next) => (action) => {
   if (!action.rest) {
@@ -19,8 +20,6 @@ export const httpApi = () => (next) => (action) => {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "http://192.168.1.105:8080",
   };
-
-  console.log(action.query);
 
   fetch(url, {
     method: action.method, // *GET, POST, PUT, DELETE, etc.
